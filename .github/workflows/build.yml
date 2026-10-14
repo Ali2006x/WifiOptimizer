@@ -12,8 +12,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: List Files
+        run: ls -la
+
       - name: Unzip Project
-        run: unzip WifiOptimizer.zip
+        run: |
+          ls *.zip
+          unzip -o *.zip
+
+      - name: List After Unzip
+        run: ls -la
 
       - name: Setup JDK 17
         uses: actions/setup-java@v4
@@ -23,6 +31,9 @@ jobs:
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
+
+      - name: Find gradlew
+        run: find . -name "gradlew"
 
       - name: Grant Permissions
         run: chmod +x WifiOptimizer/gradlew
